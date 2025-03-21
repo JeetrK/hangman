@@ -19,6 +19,12 @@ const maxMistakes = 6;
 function startGame(level) {
   selectedWord = getRandomWord(level);
 
+  updateDifficultyDisplay(level);
+
+  displayWord = '_'.repeat(selectWord.length)
+  
+  document.getElementById('wordDisplay').textConent = displayWord.split('').join(' ')
+
   //hide difficulty select
   document.getElementById("difficultySelection").classList.add("d-none");
   document.getElementById("gameArea").classList.remove("d-none");
@@ -35,4 +41,16 @@ function getRandomWord(level) {
   });
 
   return filteredWords[Math.floor(Math.random() * filteredWords.length)];
+}
+
+function updateDifficultyDisplay(level) {
+  let difficultyBox = document.getElementById("difficultyBox");
+
+  difficultyBox.classList.remove("easy", "medium", "hard");
+
+  difficultyBox.textContent = `Difficulty: ${
+    level.charAt(0).toUpperCase() + level.slice(1)
+  }`;
+
+  difficultyBox.classList.add(level);
 }
