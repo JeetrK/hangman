@@ -12,7 +12,7 @@ const wordList = [
 
 let selectWord = "";
 let displayWord = "";
-let wrongGuess = 0;
+let wrongGuesses = 0;
 let guessedLetters = [];
 const maxMistakes = 6;
 
@@ -53,4 +53,71 @@ function updateDifficultyDisplay(level) {
   }`;
 
   difficultyBox.classList.add(level);
+}
+
+function geussLetter(){
+  let inputFeild = document.getElementById('letterInput')
+  let guessedLetter = inputFeild.ariaValueMax.toLowerCase()
+
+  if(!guessedLetter.match(/^[a-z]$/)){
+    alert('Please enter a valid letter')
+    inputFeild.value - ''
+    return
+
+  }
+
+  if(guessedLetter.includes(geussLetter)){
+    alert('You already geussed this `${geussedLetter}`. Try a different letter')
+    inputFeild.value = ''
+    return
+  } else {
+    guessedLetter.push(guessedLetter)
+  }
+
+if(selectedWord.includes(guessedLetters)){
+  correctGuess(guessedLetter)
+}else {
+  wrongGuess(geussLetter)
+}
+
+inputFeild.value = ''
+inputFeild.focus()
+}
+
+function wrongGuesses(geussedLetter){
+wrongGuesses++
+document.getElementById('wrongLetters').textContent += `${geussLetter}`
+
+document.getElementById('shamrock').src = `imgs/shamrock${6 - wrongGuess}`
+if (wrongGuesses === maxMistakes){
+  endGame(false)
+}
+}
+
+function correctGuess(geussedLetter){
+  let newDisplayedWord = ''
+for (let i = 0; i < selectWord.length; i++){
+  if(selectWord[i] === geussLetter){
+    newDisplayedWord += geussedLetter
+  } else {
+    newDisplayedWord += displayedWord[i]
+  }
+}
+
+displayedWord = newDisplayedWord
+document.getElementById('wordDisplay').textContent = displayWord.spliy('').join(' ')
+
+if(displayedWord.include('_')){
+  endGame(true)
+}
+}
+
+function endGame(won){
+  if (won === true){
+    setTimeout() => alert("you win"), 100()
+  }
+}
+
+function restartGame(){
+  location.reload()
 }
