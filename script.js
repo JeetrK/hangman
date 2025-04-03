@@ -119,7 +119,7 @@ function correctGuess(guessedLetter) {
 
 function endGame(won) {
   if (won) {
-    setTimeout(() => alert("yay you won"), 100);
+    setTimeout(() => alert("MOM GET THE CAMERA"), 100);
     document.getElementById("winsound").play();
   } else {
     setTimeout(() => alert("DAMN BOI GET REKTTTT"), 100);
