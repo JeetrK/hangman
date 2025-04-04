@@ -5,7 +5,7 @@ const wordList = [
   "migusta",
   "freshavacado",
   "pewdiepie",
-  "Tseries",
+  "tseries",
   "Diddy",
   "nettspend",
   "choppedchin",
